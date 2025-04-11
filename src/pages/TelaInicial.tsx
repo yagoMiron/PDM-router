@@ -32,14 +32,14 @@ const TelaInicial = () => {
             placeholder="Digite sua senha"
             password
           />
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={() => navigation.navigate("Detalhes")}
+          >
+            <Text style={styles.btnText}>Logar</Text>
+            <Ionicons name="arrow-forward" size={32} color="#ffffff" />
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          style={styles.btn}
-          onPress={() => navigation.navigate("Detalhes")}
-        >
-          <Text style={styles.btnText}>Logar</Text>
-          <Ionicons name="arrow-forward" size={28} color="#ffffff" />
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -61,24 +61,29 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#7d37ff",
     borderRadius: 15,
+    marginTop: 16,
     gap: 8,
   },
   btnText: {
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 24,
     color: "white",
   },
   main: {
     width: "80%",
     backgroundColor: "white",
-    borderRadius: 15,
-    height: "50%",
+    borderRadius: 20,
+    minHeight: "50%",
+    borderBottomWidth: 4,
+    borderEndWidth: 4,
+    borderColor: "#160033c3",
   },
   inputArea: {
     flex: 1,
     justifyContent: "space-evenly",
-    padding: 8,
+    padding: 16,
+    gap: 8,
   },
   logo: {
     fontWeight: "bold",

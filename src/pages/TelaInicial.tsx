@@ -13,6 +13,14 @@ import { Ionicons } from "@expo/vector-icons";
 const TelaInicial = () => {
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
+  const [disableMessage, setDiseble] = useState(true);
+  const toLogin = () => {
+    if (login === "Aderbal" && senha === "123456") {
+      navigation.navigate("Home");
+    } else {
+      setDiseble(false);
+    }
+  };
   const navigation = useNavigation<any>();
   return (
     <View style={styles.container}>
@@ -32,10 +40,15 @@ const TelaInicial = () => {
             placeholder="Digite sua senha"
             password
           />
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={() => navigation.navigate("Detalhes")}
+          <Text
+            style={{
+              ...styles.invalidLogin,
+              display: disableMessage ? "none" : undefined,
+            }}
           >
+            *Login ou Senha incorretos, tente novamente
+          </Text>
+          <TouchableOpacity style={styles.btn} onPress={toLogin}>
             <Text style={styles.btnText}>Logar</Text>
             <Ionicons name="arrow-forward" size={32} color="#ffffff" />
           </TouchableOpacity>
@@ -91,5 +104,8 @@ const styles = StyleSheet.create({
     padding: 12,
     textAlign: "center",
     color: "#4c08ca",
+  },
+  invalidLogin: {
+    color: "red",
   },
 });
